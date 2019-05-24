@@ -45,39 +45,51 @@
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CityNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgC-x3-BVu">
-                                                    <rect key="frame" x="8" y="8" width="262.5" height="44.5"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPC-Ku-IKc" userLabel="CurrentConditionsImageView">
-                                                    <rect key="frame" x="278.5" y="8" width="44.5" height="44.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxQ-AC-yfs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="61"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CityNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgC-x3-BVu">
+                                                            <rect key="frame" x="8" y="8" width="199" height="45"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPC-Ku-IKc" userLabel="CurrentConditionsImageView">
+                                                            <rect key="frame" x="215" y="8" width="45" height="45"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="uPC-Ku-IKc" secondAttribute="height" multiplier="1:1" id="lub-eF-Og4"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TemperatureLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jL-KZ-3J2">
+                                                            <rect key="frame" x="268" y="8" width="110" height="45"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="uPC-Ku-IKc" secondAttribute="height" multiplier="1:1" id="lub-eF-Og4"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4jL-KZ-3J2" secondAttribute="trailing" constant="20" id="0fU-Pd-Obu"/>
+                                                        <constraint firstItem="4jL-KZ-3J2" firstAttribute="centerY" secondItem="SgC-x3-BVu" secondAttribute="centerY" id="59d-zK-2CR"/>
+                                                        <constraint firstItem="4jL-KZ-3J2" firstAttribute="leading" secondItem="uPC-Ku-IKc" secondAttribute="trailing" constant="8" id="Ck5-et-kCE"/>
+                                                        <constraint firstItem="SgC-x3-BVu" firstAttribute="leading" secondItem="cxQ-AC-yfs" secondAttribute="leading" constant="8" id="GnT-eu-0Ws"/>
+                                                        <constraint firstItem="SgC-x3-BVu" firstAttribute="top" secondItem="cxQ-AC-yfs" secondAttribute="top" constant="8" id="NX1-Y9-xpX"/>
+                                                        <constraint firstItem="SgC-x3-BVu" firstAttribute="width" secondItem="cxQ-AC-yfs" secondAttribute="width" multiplier="0.5" id="Pq0-6R-RLd"/>
+                                                        <constraint firstItem="uPC-Ku-IKc" firstAttribute="centerY" secondItem="SgC-x3-BVu" secondAttribute="centerY" id="Upu-B1-Is6"/>
+                                                        <constraint firstItem="4jL-KZ-3J2" firstAttribute="height" secondItem="SgC-x3-BVu" secondAttribute="height" id="XVn-2E-CMS"/>
+                                                        <constraint firstItem="uPC-Ku-IKc" firstAttribute="height" secondItem="SgC-x3-BVu" secondAttribute="height" id="ZnE-we-ueT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="SgC-x3-BVu" secondAttribute="bottom" constant="8" id="oDr-Y3-6E1"/>
+                                                        <constraint firstItem="uPC-Ku-IKc" firstAttribute="leading" secondItem="SgC-x3-BVu" secondAttribute="trailing" constant="8" id="zMB-Ga-rEQ"/>
                                                     </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TemperatureLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jL-KZ-3J2">
-                                                    <rect key="frame" x="331" y="8" width="59" height="44.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="SgC-x3-BVu" firstAttribute="leading" secondItem="ngA-UH-XS0" secondAttribute="leading" constant="8" id="12M-nc-l1u"/>
-                                                <constraint firstItem="4jL-KZ-3J2" firstAttribute="height" secondItem="SgC-x3-BVu" secondAttribute="height" id="2ly-OF-dBQ"/>
-                                                <constraint firstItem="uPC-Ku-IKc" firstAttribute="height" secondItem="SgC-x3-BVu" secondAttribute="height" id="Cfe-Iu-cCl"/>
-                                                <constraint firstAttribute="trailing" secondItem="4jL-KZ-3J2" secondAttribute="trailing" constant="8" id="Jgg-qM-1fY"/>
-                                                <constraint firstItem="4jL-KZ-3J2" firstAttribute="leading" secondItem="uPC-Ku-IKc" secondAttribute="trailing" constant="8" id="Mgx-m2-erP"/>
-                                                <constraint firstAttribute="bottom" secondItem="SgC-x3-BVu" secondAttribute="bottom" constant="16" id="TUm-IU-dKT"/>
-                                                <constraint firstItem="uPC-Ku-IKc" firstAttribute="leading" secondItem="SgC-x3-BVu" secondAttribute="trailing" constant="8" id="c6Z-sP-R4o"/>
-                                                <constraint firstItem="uPC-Ku-IKc" firstAttribute="centerY" secondItem="SgC-x3-BVu" secondAttribute="centerY" id="fs3-fj-q1d"/>
-                                                <constraint firstItem="4jL-KZ-3J2" firstAttribute="centerY" secondItem="SgC-x3-BVu" secondAttribute="centerY" id="fxB-Dc-HbK"/>
-                                                <constraint firstItem="SgC-x3-BVu" firstAttribute="top" secondItem="ngA-UH-XS0" secondAttribute="top" constant="8" id="g0A-e4-5oL"/>
-                                                <constraint firstItem="SgC-x3-BVu" firstAttribute="width" secondItem="ngA-UH-XS0" secondAttribute="width" multiplier="0.66" id="lIu-C6-Xtr"/>
+                                                <constraint firstAttribute="bottom" secondItem="cxQ-AC-yfs" secondAttribute="bottom" constant="8" id="Ktb-2E-fKD"/>
+                                                <constraint firstItem="cxQ-AC-yfs" firstAttribute="top" secondItem="ngA-UH-XS0" secondAttribute="top" id="XlJ-YL-7nJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="cxQ-AC-yfs" secondAttribute="trailing" id="lEq-qG-f9L"/>
+                                                <constraint firstItem="cxQ-AC-yfs" firstAttribute="leading" secondItem="ngA-UH-XS0" secondAttribute="leading" id="wPD-xQ-yiT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,6 +97,7 @@
                                             <outlet property="cityNameLabel" destination="SgC-x3-BVu" id="0wM-Qf-Z9n"/>
                                             <outlet property="currentConditionsImage" destination="uPC-Ku-IKc" id="jZd-Zg-yh2"/>
                                             <outlet property="temperatureLabel" destination="4jL-KZ-3J2" id="AQi-DR-OYP"/>
+                                            <outlet property="viewContainer" destination="cxQ-AC-yfs" id="Jf6-xd-hKg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

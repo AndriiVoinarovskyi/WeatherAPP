@@ -16,6 +16,7 @@ class CitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Set View")
         citiesPresenter.setView(citiesVC: self)
 
         // Do any additional setup after loading the view.
@@ -42,7 +43,7 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableViewCell", for: indexPath)
         if let cell = cell as? CityTableViewCell {
-            citiesPresenter.setCellData(cell: cell, index: indexPath.row)
+            citiesPresenter.setCellData(cell: cell, for: indexPath.row)
         }
         
         return cell

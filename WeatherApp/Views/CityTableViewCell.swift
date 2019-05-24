@@ -10,12 +10,15 @@ import UIKit
 
 class CityTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var currentConditionsImage: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        viewContainer.layer.cornerRadius = 8
+        
         // Initialization code
     }
 

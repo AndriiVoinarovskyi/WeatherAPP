@@ -10,12 +10,12 @@ import Foundation
 
 
 // MARK: - HourlyForecastModelElement
-struct HourlyForecastModelElement: Codable {
-    let dateTime: Date?
+struct HourlyForecastsModelElement: Codable {
+    let dateTime: String?
     let epochDateTime, weatherIcon: Int?
     let iconPhrase: String?
     let isDaylight: Bool?
-    let temperature: Temperature?
+    let temperature: TemperatureHourly?
     let precipitationProbability: Int?
     let mobileLink, link: String?
     
@@ -33,9 +33,9 @@ struct HourlyForecastModelElement: Codable {
 }
 
 // MARK: - Temperature
-struct Temperature: Codable {
+struct TemperatureHourly: Codable {
     let value: Double?
-    let unit: Unit?
+    let unit: UnitHourly?
     let unitType: Int?
     
     enum CodingKeys: String, CodingKey {
@@ -45,9 +45,10 @@ struct Temperature: Codable {
     }
 }
 
-enum Unit: String, Codable {
+enum UnitHourly: String, Codable {
     case c = "C"
+    case f = "F"
 }
 
-typealias HourlyForecastModel = [HourlyForecastModelElement]
+typealias HourlyForecastsModel = [HourlyForecastsModelElement]
 

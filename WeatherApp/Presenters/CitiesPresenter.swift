@@ -12,7 +12,7 @@ class CitiesPresenter {
     
     let cityCellPresenter = CityCellPresenter()
     
-    var cities = ["Kyiv", "Vinnytsia"]
+    var cities = ["324505", "326175", "22889"] //
     var numberOfCities: Int {
         get {
             return cities.count
@@ -20,15 +20,16 @@ class CitiesPresenter {
     }
     
     
-    
     func setView(citiesVC: CitiesViewController) {
-        DispatchQueue.main.async {
-            citiesVC.tableView.reloadData()
-        }
+//        DispatchQueue.main.async {
+//            citiesVC.tableView.reloadData()
+//        }
     }
     
-    func setCellData(cell: CityTableViewCell, index: Int) {
-        let cityName = cities[index]
-        cityCellPresenter.setCellData(cell: cell, cityName: cityName, conditions: "conditions", temperature: "15")
+    func setCellData(cell: CityTableViewCell, for index: Int) {
+        DataService.shared.getData(for: .currentConditions, locationId: cities[index], parameters: nil) { (model: CurrentConditionsModel?) in
+            guard let model = model else { return }
+            self.cityCellPresenter.setCellData(cell: cell, model: model)
+        }
     }
 }

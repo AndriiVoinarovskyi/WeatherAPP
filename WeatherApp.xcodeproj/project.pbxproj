@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B031D5082297C9FF009AB8B6 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031D5072297C9FF009AB8B6 /* Globals.swift */; };
+		B031D50C2297D66C009AB8B6 /* CityCellInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031D50B2297D66C009AB8B6 /* CityCellInteractor.swift */; };
 		B06050FA229577ED00F98EC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06050F9229577ED00F98EC2 /* AppDelegate.swift */; };
 		B0605102229577ED00F98EC2 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0605100229577ED00F98EC2 /* WeatherApp.xcdatamodeld */; };
 		B0605104229577EE00F98EC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0605103229577EE00F98EC2 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		B07C6040229593A700E34E90 /* HourlyForecastsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C603F229593A700E34E90 /* HourlyForecastsModel.swift */; };
 		B07C6042229593C200E34E90 /* DailyForecastsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C6041229593C200E34E90 /* DailyForecastsModel.swift */; };
 		B07C6044229596B200E34E90 /* LocationSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C6043229596B200E34E90 /* LocationSearchModel.swift */; };
+		B0D35D152297EDFF00C6F4B6 /* CitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D35D142297EDFF00C6F4B6 /* CitiesInteractor.swift */; };
+		B0E4BF912296C50B00DC7011 /* URLMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4BF902296C50B00DC7011 /* URLMaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B031D5072297C9FF009AB8B6 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		B031D50B2297D66C009AB8B6 /* CityCellInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellInteractor.swift; sourceTree = "<group>"; };
 		B06050F6229577ED00F98EC2 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06050F9229577ED00F98EC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0605101229577ED00F98EC2 /* WeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherApp.xcdatamodel; sourceTree = "<group>"; };
@@ -67,6 +73,8 @@
 		B07C603F229593A700E34E90 /* HourlyForecastsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastsModel.swift; sourceTree = "<group>"; };
 		B07C6041229593C200E34E90 /* DailyForecastsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastsModel.swift; sourceTree = "<group>"; };
 		B07C6043229596B200E34E90 /* LocationSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchModel.swift; sourceTree = "<group>"; };
+		B0D35D142297EDFF00C6F4B6 /* CitiesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesInteractor.swift; sourceTree = "<group>"; };
+		B0E4BF902296C50B00DC7011 /* URLMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLMaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +125,11 @@
 		B06050F8229577ED00F98EC2 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				B07C602622957B7B00E34E90 /* Globals */,
 				B07C602A22957BB900E34E90 /* DataModels */,
 				B07C602922957BA400E34E90 /* Views */,
 				B07C602822957B9900E34E90 /* Interactors */,
 				B07C602722957B8D00E34E90 /* Presenters */,
-				B07C602622957B7B00E34E90 /* Globals */,
 				B07C602522957B6A00E34E90 /* DataService */,
 				B06050F9229577ED00F98EC2 /* AppDelegate.swift */,
 				B0605103229577EE00F98EC2 /* Assets.xcassets */,
@@ -154,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				B07C60392295927900E34E90 /* DataService.swift */,
+				B0E4BF902296C50B00DC7011 /* URLMaker.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -161,6 +170,7 @@
 		B07C602622957B7B00E34E90 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
+				B031D5072297C9FF009AB8B6 /* Globals.swift */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -177,6 +187,8 @@
 		B07C602822957B9900E34E90 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
+				B031D50B2297D66C009AB8B6 /* CityCellInteractor.swift */,
+				B0D35D142297EDFF00C6F4B6 /* CitiesInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -335,15 +347,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E4BF912296C50B00DC7011 /* URLMaker.swift in Sources */,
 				B07C6044229596B200E34E90 /* LocationSearchModel.swift in Sources */,
 				B07C60362295859E00E34E90 /* CitiesPresenter.swift in Sources */,
 				B07C603A2295927900E34E90 /* DataService.swift in Sources */,
 				B07C6042229593C200E34E90 /* DailyForecastsModel.swift in Sources */,
 				B07C603E2295938000E34E90 /* CurrentConditionsModel.swift in Sources */,
+				B031D5082297C9FF009AB8B6 /* Globals.swift in Sources */,
 				B07C603022957E9A00E34E90 /* CitiesViewController.swift in Sources */,
 				B0605102229577ED00F98EC2 /* WeatherApp.xcdatamodeld in Sources */,
 				B07C603822958D2000E34E90 /* CityCellPresenter.swift in Sources */,
 				B07C60342295834D00E34E90 /* CityTableViewCell.swift in Sources */,
+				B0D35D152297EDFF00C6F4B6 /* CitiesInteractor.swift in Sources */,
+				B031D50C2297D66C009AB8B6 /* CityCellInteractor.swift in Sources */,
 				B06050FA229577ED00F98EC2 /* AppDelegate.swift in Sources */,
 				B07C6040229593A700E34E90 /* HourlyForecastsModel.swift in Sources */,
 			);

@@ -9,13 +9,13 @@
 import Foundation
 
 // MARK: - CurrentConditionModelElement
-struct CurrentConditionModelElement: Codable {
-    let localObservationDateTime: Date?
+struct CurrentConditionsModelElement: Codable {
+    let localObservationDateTime: String?
     let epochTime: Int?
     let weatherText: String?
     let weatherIcon: Int?
     let hasPrecipitation: Bool?
-    let precipitationType: JSONNull?
+    let precipitationType: String?
     let isDayTime: Bool?
     let temperature: CurrentTemperature?
     let mobileLink, link: String?
@@ -46,7 +46,7 @@ struct CurrentTemperature: Codable {
 
 // MARK: - Imperial
 struct Imperial: Codable {
-    let value: Int?
+    let value: Double?
     let unit: String?
     let unitType: Int?
     
@@ -57,4 +57,4 @@ struct Imperial: Codable {
     }
 }
 
-typealias CurrentConditionModel = [CurrentConditionModelElement]
+typealias CurrentConditionsModel = [CurrentConditionsModelElement]
