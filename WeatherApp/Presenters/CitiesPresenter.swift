@@ -18,18 +18,33 @@ class CitiesPresenter {
             return cities.count
         }
     }
-    
+    var currentConditions: CurrentConditionsModel = []
     
     func setView(citiesVC: CitiesViewController) {
+        downloadData()
 //        DispatchQueue.main.async {
 //            citiesVC.tableView.reloadData()
 //        }
     }
     
     func setCellData(cell: CityTableViewCell, for index: Int) {
-        DataService.shared.getData(for: .currentConditions, locationId: cities[index], parameters: nil) { (model: CurrentConditionsModel?) in
-            guard let model = model else { return }
-            self.cityCellPresenter.setCellData(cell: cell, model: model)
+        let model = currentConditions[index]
+        self.cityCellPresenter.setCellData(cell: cell, model: model)
+    }
+    
+    private func downloadData() {
+        for item in cities {
+            let downloadGroup = DispatchGroup()
+            downloadGroup.enter()
+            DataService.shared.getData(for: .currentConditions, locationId: item, parameters: nil) { [weak self] (model: CurrentConditionsModel?) in
+                guard let model = model else { return }
+                self?.currentConditions.append(contentsOf: model)
+                downloadGroup.leave()
+            }
+            downloadGroup.wait()
         }
     }
+    
+    
+    
 }

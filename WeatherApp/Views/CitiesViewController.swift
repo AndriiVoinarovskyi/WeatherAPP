@@ -49,5 +49,14 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("cell tapped")
+        let storyboard = UIStoryboard(name: "Details", bundle: nil)
+        print(storyboard)
+        let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController")
+        print(detailsVC)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
     
 }
