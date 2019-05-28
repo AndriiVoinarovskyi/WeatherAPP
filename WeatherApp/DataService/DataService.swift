@@ -13,7 +13,7 @@ class DataService {
     enum RequestName {
         case locationSearch
         case currentConditions
-        case hourluForecasts
+        case hourlyForecasts
         case dailyForecasts
         
         var string: String {
@@ -21,7 +21,7 @@ class DataService {
                 switch self {
                 case .locationSearch:    return "https://dataservice.accuweather.com/locations/v1/cities/autocomplete"
                 case .currentConditions: return "https://dataservice.accuweather.com/currentconditions/v1/"
-                case .hourluForecasts:   return "https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/"
+                case .hourlyForecasts:   return "https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/"
                 case .dailyForecasts:    return "https://dataservice.accuweather.com/forecasts/v1/daily/5day/"
                 }
             }

@@ -7,20 +7,23 @@
 //
 
 import Foundation
+import UIKit
 
 class CitiesPresenter {
     
     let cityCellPresenter = CityCellPresenter()
+    let detailsPresenter = DetailsPresenter()
     
-    var cities = ["324505", "326175", "22889"] //
+    var cities = ["324505"] // "324505", "326175", "22889"
     var numberOfCities: Int {
         get {
             return cities.count
         }
     }
-    var currentConditions: CurrentConditionsModel = []
+    private var currentConditions: CurrentConditionsModel = []
     
     func setView(citiesVC: CitiesViewController) {
+        citiesVC.navigationItem.title = "Cities"
         downloadData()
 //        DispatchQueue.main.async {
 //            citiesVC.tableView.reloadData()
@@ -29,7 +32,8 @@ class CitiesPresenter {
     
     func setCellData(cell: CityTableViewCell, for index: Int) {
         let model = currentConditions[index]
-        self.cityCellPresenter.setCellData(cell: cell, model: model)
+        let city = cities[index]
+        self.cityCellPresenter.setCellData(cell: cell, city: city, model: model)
     }
     
     private func downloadData() {
@@ -45,6 +49,24 @@ class CitiesPresenter {
         }
     }
     
-    
+    func presentDetailsController(citiesVC: CitiesViewController, index: Int) {
+        print("cell tapped")
+        let storyboard = UIStoryboard(name: "Details", bundle: nil)
+        print(storyboard)
+        let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        print(detailsVC)
+        detailsVC.detailsPresenter = detailsPresenter
+        detailsPresenter.setDetails(numberOfCities: numberOfCities)
+        let locationId = cities[index]
+        let cityName = cities[index]
+        let dateTime = currentConditions[index].localObservationDateTime
+        let temperature = currentConditions[index].temperature?.metric?.value
+        let weatherText = currentConditions[index].weatherText
+        let weatherIcon = currentConditions[index].weatherIcon
+        
+        detailsPresenter.setDataInPresenter(index: index, locationId: locationId, cityName: cityName, dateTime: dateTime, temperature: temperature, weatherText: weatherText, weatherIcon: weatherIcon)
+        citiesVC.navigationController?.pushViewController(detailsVC, animated: true)
+    }
+
     
 }

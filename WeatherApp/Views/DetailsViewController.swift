@@ -9,16 +9,28 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var dateTimeLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherTextLabel: UILabel!
+    
+    @IBOutlet weak var weatherIconImageView: UIImageView!
+    
+    @IBOutlet weak var hourlyForecastsCollectionView: UICollectionView!
+    @IBOutlet weak var dailyForecastsCollectionView: UICollectionView!
+    
+    var detailsPresenter = DetailsPresenter()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        detailsPresenter.setDataInVC(detailsVC: self)
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+
     
     /*
     // MARK: - Navigation
@@ -30,4 +42,35 @@ class DetailsViewController: UIViewController {
     }
     */
 
+}
+
+extension DetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+        case hourlyForecastsCollectionView:
+            return detailsPresenter.numberOfHourlyForecasts
+        default:
+            return detailsPresenter.numberOfDailyForecasts
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var identifier: String
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        switch collectionView {
+        case hourlyForecastsCollectionView :
+            identifier = "hourlyForecastsCollectionViewCell"
+            let cell = cell as? HourlyForecastsCollectionViewCell
+            detailsPresenter.setHourlyForecasstsCollectionViewCell(cell: cell, index: indexPath.row)
+        default:
+            identifier = "dailyForecastsCollectioVoew"
+            let cell = cell as? DailyForecastsCollectionViewCell
+            detailsPresenter.setDailyForecastsCollectionViewCell(cell: cell, index: indexPath.row)
+        }
+        
+
+        return cell
+    }
+    
+    
 }

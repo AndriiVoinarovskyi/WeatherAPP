@@ -14,8 +14,9 @@ class CityCellPresenter {
     var metricTemperatureText = "N/A"
     var imperialTemperatureText = "N/A"
     
-    func setCellData(cell: CityTableViewCell, model: CurrentConditionsModelElement) {
+    func setCellData(cell: CityTableViewCell, city: String, model: CurrentConditionsModelElement) {
         cell.selectionStyle = .none
+        cell.cityNameLabel.text = city
         guard let metricTemperature = model.temperature?.metric?.value else { return }
         metricTemperatureText = "\(metricTemperature)ºC"
         guard let imperialTemperature = model.temperature?.imperial?.value else { return }
@@ -30,7 +31,7 @@ class CityCellPresenter {
                 cell.cityNameLabel.textColor = .white
                 cell.temperatureLabel.textColor = .white
             default:
-                cell.viewContainer.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7004090665)
+                cell.viewContainer.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6)
                 cell.cityNameLabel.textColor = .black
                 cell.temperatureLabel.textColor = .black
             }
