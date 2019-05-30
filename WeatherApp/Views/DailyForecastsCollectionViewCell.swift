@@ -10,4 +10,10 @@ import UIKit
 
 class DailyForecastsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var dateTimeLabel: UILabel!
+    @IBOutlet weak var minTemperature: UILabel!
+    @IBOutlet weak var maxTemperature: UILabel!
+    @IBOutlet weak var dayImageView: UIImageView!
+    @IBOutlet weak var nightImageView: UIImageView!
+    
 }

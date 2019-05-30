@@ -11,6 +11,7 @@ import Foundation
 typealias Parameters = [String : String]?
 
 struct Details {
+    var cityId: String
     var cityName: String
     var dateTime: String?
     var temperature: Double?
@@ -20,13 +21,14 @@ struct Details {
     var dailyForecasts: [DailyForecast]?
     
     init() {
+        cityId = ""
         cityName = ""
         dateTime = ""
         temperature = 0
         weatherText = ""
         weatherIcon = 0
-        hourlyForecasts = []
-        dailyForecasts = []
+        hourlyForecasts = nil
+        dailyForecasts = nil
     }
 }
 

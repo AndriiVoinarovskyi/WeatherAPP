@@ -10,8 +10,6 @@ import UIKit
 
 class HourlyForecastsCollectionViewCell: UICollectionViewCell {
     
-
-    @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var weatherIconImageView: UIImageView!

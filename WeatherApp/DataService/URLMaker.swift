@@ -14,9 +14,9 @@ class URLMaker {
     
     static let shared = URLMaker()
     
-    func getURL(baseLink: String, locationId: String?, parameters: Parameters) -> URL? {
+    func getURL(baseLink: String, cityId: String?, parameters: Parameters) -> URL? {
         let params = parametersAsString(parameters: parameters)
-        let link = baseLink + (locationId ?? "") + "?apikey=" + apikey + params
+        let link = baseLink + (cityId ?? "") + "?apikey=" + apikey + params
         print("\(link)")
         return URL(string: link)
     }

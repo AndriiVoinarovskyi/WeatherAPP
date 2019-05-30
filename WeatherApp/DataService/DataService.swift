@@ -30,9 +30,9 @@ class DataService {
 
     static let shared = DataService()
     
-    func getData<Type: Codable>(for requestName: RequestName, locationId: String?, parameters: Parameters, completion: @escaping (Type?)->()) {
+    func getData<Type: Codable>(for requestName: RequestName, cityId: String?, parameters: Parameters, completion: @escaping (Type?)->()) {
         let baseLink = requestName.string
-        guard let url = URLMaker.shared.getURL(baseLink: baseLink, locationId: locationId, parameters: parameters) else { return }
+        guard let url = URLMaker.shared.getURL(baseLink: baseLink, cityId: cityId, parameters: parameters) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         

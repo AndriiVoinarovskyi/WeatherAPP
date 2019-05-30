@@ -56,21 +56,19 @@ extension DetailsViewController: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var identifier: String
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         switch collectionView {
         case hourlyForecastsCollectionView :
             identifier = "hourlyForecastsCollectionViewCell"
-            let cell = cell as? HourlyForecastsCollectionViewCell
-            detailsPresenter.setHourlyForecasstsCollectionViewCell(cell: cell, index: indexPath.row)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! HourlyForecastsCollectionViewCell
+            let cellHeight = hourlyForecastsCollectionView.bounds.size.height
+            detailsPresenter.setHourlyForecastsCollectionViewCell(cell: cell, index: indexPath.row, cellHeight: cellHeight)
+            return cell
         default:
-            identifier = "dailyForecastsCollectioVoew"
-            let cell = cell as? DailyForecastsCollectionViewCell
-            detailsPresenter.setDailyForecastsCollectionViewCell(cell: cell, index: indexPath.row)
+            identifier = "dailyForecastsCollectionViewCell"
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! DailyForecastsCollectionViewCell
+            let cellHeight = dailyForecastsCollectionView.bounds.size.height
+            detailsPresenter.setDailyForecastsCollectionViewCell(cell: cell, index: indexPath.row, cellHeight: cellHeight)
+            return cell
         }
-        
-
-        return cell
     }
-    
-    
 }

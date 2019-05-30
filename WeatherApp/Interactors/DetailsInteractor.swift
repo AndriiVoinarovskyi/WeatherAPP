@@ -10,15 +10,16 @@ import Foundation
 
 class DetailsInteractor {
     
-    func getHourlyForecasts(locationId: String, completion: @escaping (HourlyForecastsModel)->()) {
-        DataService.shared.getData(for: .hourlyForecasts, locationId: locationId, parameters: ["metric" : "true"]) { (hourlyForecastsModel: HourlyForecastsModel?) in
+    func getHourlyForecasts(cityId: String, completion: @escaping (HourlyForecastsModel)->()) {
+        DataService.shared.getData(for: .hourlyForecasts, cityId: cityId, parameters: ["metric" : "true"]) { (hourlyForecastsModel: HourlyForecastsModel?) in
+            print("data is gotten")
             guard let model = hourlyForecastsModel else { return }
             completion(model)
         }
     }
     
-    func getDailyForecasts(locationId: String, completion: @escaping ([DailyForecast])->()) {
-        DataService.shared.getData(for: .dailyForecasts, locationId: locationId, parameters: ["metric" : "true"]) { (dailyForecastsModel: DailyForecastsModel?) in
+    func getDailyForecasts(cityId: String, completion: @escaping ([DailyForecast])->()) {
+        DataService.shared.getData(for: .dailyForecasts, cityId: cityId, parameters: ["metric" : "true"]) { (dailyForecastsModel: DailyForecastsModel?) in
             guard let model = dailyForecastsModel?.dailyForecasts else { return }
             completion(model)
         }

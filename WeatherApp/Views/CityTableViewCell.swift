@@ -17,7 +17,6 @@ class CityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewContainer.layer.cornerRadius = 8
         
         // Initialization code
     }
