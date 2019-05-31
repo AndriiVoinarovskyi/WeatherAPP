@@ -10,5 +10,10 @@ import Foundation
 
 class CityCellInteractor {
     
-
+    func getCurrentConditions(for cityId: String, completion: @escaping (CurrentConditionsModel)->()) {
+        DataService.shared.getData(for: .currentConditions, cityId: cityId, parameters: nil) { (currentConditionsModel: CurrentConditionsModel?) in
+            guard let currentConditionsModel = currentConditionsModel else { return }
+            completion(currentConditionsModel)
+        }
+    }
 }

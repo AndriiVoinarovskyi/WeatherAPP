@@ -10,10 +10,11 @@ import Foundation
 
 class CitiesInteractor {
     
-    func getCurrentConditions(for cityId: String, completion: @escaping (CurrentConditionsModel)->()) {
-        DataService.shared.getData(for: .currentConditions, cityId: cityId, parameters: nil) { (currentConditionsModel: CurrentConditionsModel?) in
-            guard let currentConditionsModel = currentConditionsModel else { return }
-            completion(currentConditionsModel)
+    func getSearchResult(for city: String, completion: @escaping (LocationSearchModel) -> ()) {
+        DataService.shared.getData(for: .locationSearch, cityId: nil, parameters: ["q": city]) { (locationSearchModel: LocationSearchModel?) in
+            guard let locationSearchModel = locationSearchModel else { return }
+            completion(locationSearchModel)
         }
     }
+    
 }

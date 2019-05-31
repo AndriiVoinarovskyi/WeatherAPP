@@ -40,6 +40,8 @@
 		B0D826D9229EB51200787E23 /* DateTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D826D8229EB51200787E23 /* DateTimeFormatter.swift */; };
 		B0D826E3229ED05300787E23 /* ForecastsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D826E2229ED05300787E23 /* ForecastsCollectionViewLayout.swift */; };
 		B0E4BF912296C50B00DC7011 /* URLMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4BF902296C50B00DC7011 /* URLMaker.swift */; };
+		B0E63F20229FE547000CB12C /* CitySearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E63F1F229FE547000CB12C /* CitySearchTableViewCell.swift */; };
+		B0E63F2222A008F1000CB12C /* CitiesSearchCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E63F2122A008F1000CB12C /* CitiesSearchCellPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		B0D826D8229EB51200787E23 /* DateTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFormatter.swift; sourceTree = "<group>"; };
 		B0D826E2229ED05300787E23 /* ForecastsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B0E4BF902296C50B00DC7011 /* URLMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLMaker.swift; sourceTree = "<group>"; };
+		B0E63F1F229FE547000CB12C /* CitySearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchTableViewCell.swift; sourceTree = "<group>"; };
+		B0E63F2122A008F1000CB12C /* CitiesSearchCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesSearchCellPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +212,7 @@
 			children = (
 				B07C60352295859E00E34E90 /* CitiesPresenter.swift */,
 				B07C603722958D2000E34E90 /* CityCellPresenter.swift */,
+				B0E63F2122A008F1000CB12C /* CitiesSearchCellPresenter.swift */,
 				B0695B1B22996D51006F7EC0 /* DetailsPresenter.swift */,
 				B00B83B9229C2F78007D0329 /* HourlyForecastsCollectionViewCellPresenter.swift */,
 				B00B83BB229C2F9E007D0329 /* DailyForecastsCollectionViewCellPresenter.swift */,
@@ -218,8 +223,8 @@
 		B07C602822957B9900E34E90 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				B031D50B2297D66C009AB8B6 /* CityCellInteractor.swift */,
 				B0D35D142297EDFF00C6F4B6 /* CitiesInteractor.swift */,
+				B031D50B2297D66C009AB8B6 /* CityCellInteractor.swift */,
 				B00B83B3229C1D49007D0329 /* DetailsInteractor.swift */,
 			);
 			path = Interactors;
@@ -231,6 +236,7 @@
 				B07C602B22957D4500E34E90 /* Main.storyboard */,
 				B07C602F22957E9A00E34E90 /* CitiesViewController.swift */,
 				B07C60332295834D00E34E90 /* CityTableViewCell.swift */,
+				B0E63F1F229FE547000CB12C /* CitySearchTableViewCell.swift */,
 				B07C602D22957D7A00E34E90 /* Details.storyboard */,
 				B0D35D552298538700C6F4B6 /* DetailsViewController.swift */,
 				B00B83B5229C2581007D0329 /* HourlyForecastsCollectionViewCell.swift */,
@@ -389,9 +395,11 @@
 				B00B83BC229C2F9E007D0329 /* DailyForecastsCollectionViewCellPresenter.swift in Sources */,
 				B00B83B6229C2581007D0329 /* HourlyForecastsCollectionViewCell.swift in Sources */,
 				B0A359C0229D468100F01642 /* TemperatureTextGetter.swift in Sources */,
+				B0E63F20229FE547000CB12C /* CitySearchTableViewCell.swift in Sources */,
 				B07C6044229596B200E34E90 /* LocationSearchModel.swift in Sources */,
 				B0A359BE229D376D00F01642 /* WeatherIconNameGetter.swift in Sources */,
 				B0D826E3229ED05300787E23 /* ForecastsCollectionViewLayout.swift in Sources */,
+				B0E63F2222A008F1000CB12C /* CitiesSearchCellPresenter.swift in Sources */,
 				B07C60362295859E00E34E90 /* CitiesPresenter.swift in Sources */,
 				B07C603A2295927900E34E90 /* DataService.swift in Sources */,
 				B07C6042229593C200E34E90 /* DailyForecastsModel.swift in Sources */,

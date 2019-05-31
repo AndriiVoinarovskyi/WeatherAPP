@@ -11,28 +11,42 @@ import UIKit
 
 class CityCellPresenter {
     
+    let cityCellInteractor = CityCellInteractor()
+    
     var metricTemperatureText = "N/A"
     var imperialTemperatureText = "N/A"
     
-    func setCellData(cell: CityTableViewCell, cityName: String, model: CurrentConditionsModelElement) {
-        cell.selectionStyle = .none
+    func setCellData(cell: CityTableViewCell, cityId: String, cityName: String, currentConditions: CurrentConditionsModelElement?, completion: @escaping (CurrentConditionsModelElement) -> ()) {
         cell.cityNameLabel.text = cityName
+        cell.selectionStyle = .none
         cell.viewContainer.layer.cornerRadius = cornerRadius
+        cell.viewContainer.layer.backgroundColor = dayBackgroundColor
+        cell.cityNameLabel.textColor = dayFontColor
+        cell.temperatureLabel.textColor = dayFontColor
+        
+        guard let currentConditions = currentConditions else {
+            cityCellInteractor.getCurrentConditions(for: cityId) { [weak self] (model) in
+                guard let model = model.first else { return }
+                guard let currentConditions = model else { return }
+                self?.cellConfiguration(cell: cell, model: currentConditions)
+                completion(currentConditions)
+            }
+            return
+        }
+        cellConfiguration(cell: cell, model: currentConditions)
+    }
+    
+    func cellConfiguration(cell: CityTableViewCell, model: CurrentConditionsModelElement) {
         metricTemperatureText = TemperatureTextGetter.shared.getText(model.temperature?.metric?.value) + "C"
         imperialTemperatureText = TemperatureTextGetter.shared.getText(model.temperature?.imperial?.value) + "F"
         let temperatureText = self.metricTemperatureText + " / " + self.imperialTemperatureText
         let weatherIcon = WeatherIconNameGetter.shared.getName(iconIndex: model.weatherIcon ?? -1)
-
+        
         DispatchQueue.main.async {
-            switch model.isDayTime {
-            case false:
+            if model.isDayTime == false {
                 cell.viewContainer.layer.backgroundColor = nightBackgroundColor
                 cell.cityNameLabel.textColor = nightFontColor
                 cell.temperatureLabel.textColor = nightFontColor
-            default:
-                cell.viewContainer.layer.backgroundColor = dayBackgroundColor
-                cell.cityNameLabel.textColor = dayFontColor
-                cell.temperatureLabel.textColor = dayFontColor
             }
             cell.temperatureLabel.text = temperatureText
             cell.currentConditionsImage.image = UIImage(named: weatherIcon)

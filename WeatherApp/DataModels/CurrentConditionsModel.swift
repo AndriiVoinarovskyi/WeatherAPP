@@ -57,4 +57,4 @@ struct Imperial: Codable {
     }
 }
 
-typealias CurrentConditionsModel = [CurrentConditionsModelElement]
+typealias CurrentConditionsModel = [CurrentConditionsModelElement?]

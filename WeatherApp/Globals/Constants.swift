@@ -14,6 +14,9 @@ let dayFontColor:           UIColor = #colorLiteral(red: 0, green: 0, blue: 0, a
 let nightBackgroundColor:   CGColor = #colorLiteral(red: 0.07243876904, green: 0.1231349334, blue: 0.2758660614, alpha: 0.3)
 let nightFontColor:         UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
+let citiesRowHeight: CGFloat = 45
+let searchResultsRowHeight: CGFloat = 90
+
 let widthForecastsCell: CGFloat = 100
 
 let cornerRadius: CGFloat = 8
