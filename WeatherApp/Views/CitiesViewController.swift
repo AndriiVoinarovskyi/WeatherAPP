@@ -25,10 +25,7 @@ class CitiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Set View")
-        switch searchMode {
-        case false: citiesPresenter.setCitiesView(citiesVC: self)
-        case true: citiesPresenter.setCitiesSearchView(citiesVC: self)
-        }
+        citiesPresenter.setCitiesView(citiesVC: self)
         
         // Do any additional setup after loading the view.
     }
@@ -61,12 +58,14 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cellIdentifier = ""
         switch searchMode {
         case false:
-            return citiesPresenter.setCitiesCells(tableView: tableView, cellIdentifier: "CityTableViewCell", indexPath: indexPath)
+            cellIdentifier = "CityTableViewCell"
         case true:
-            return citiesPresenter.setCitiesSearchCells(tableView: tableView, cellIdentifier: "CitySearchTableViewCell", indexPath: indexPath)
+            cellIdentifier = "CitySearchTableViewCell"
         }
+        return citiesPresenter.setCitiesCells(tableView: tableView, cellIdentifier: cellIdentifier, indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

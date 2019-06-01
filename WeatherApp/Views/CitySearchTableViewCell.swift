@@ -16,6 +16,8 @@ class CitySearchTableViewCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var viewContainer: UIView!
     
+    var addButtonAction: (() -> ())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,5 +30,6 @@ class CitySearchTableViewCell: UITableViewCell {
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
+        addButtonAction?()
     }
 }

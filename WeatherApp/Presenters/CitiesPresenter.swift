@@ -39,28 +39,39 @@ class CitiesPresenter {
     
     func setCitiesView(citiesVC: CitiesViewController) {
         print("currentconditionsisepty = \(currentConditions.isEmpty)")
-        citiesVC.navigationItem.title = "Cities"
-        citiesVC.tableView.rowHeight = citiesRowHeight
-        citiesVC.searchButton.layer.opacity = 0.3
-        citiesVC.searchButton.layer.cornerRadius = cornerRadius
-        citiesVC.backButton.layer.opacity = 0.3
-        citiesVC.backButton.layer.cornerRadius = cornerRadius
-        if currentConditions.isEmpty {
-            currentConditions = Array(repeating: nil, count: numberOfCities)
+        configurateButton(button: citiesVC.searchButton, searchMode: citiesVC.searchMode)
+        citiesVC.searchButtonAction = { self.searchButtonAction(citiesVC: citiesVC) }
+        configurateButton(button: citiesVC.backButton, searchMode: citiesVC.searchMode)
+        citiesVC.backButtonAction = { self.backButtonAction(citiesVC: citiesVC) }
+        
+        let searchMode = citiesVC.searchMode
+        
+        switch searchMode {
+        case true:
+            citiesVC.navigationItem.title = "Search"
+            citiesVC.tableView.rowHeight = searchResultsRowHeight
+
+        case false:
+            citiesVC.navigationItem.title = "Cities"
+            citiesVC.tableView.rowHeight = citiesRowHeight
+            if currentConditions.isEmpty {
+                currentConditions = Array(repeating: nil, count: numberOfCities)
+            }
+
         }
         print("currentconditionsisepty = \(currentConditions.isEmpty)")
     }
     
-    func setCitiesSearchView(citiesVC: CitiesViewController) {
-        citiesVC.navigationItem.title = "Search results"
-        citiesVC.tableView.rowHeight = searchResultsRowHeight
-        citiesVC.searchButton.layer.opacity = 1
-        citiesVC.searchButton.layer.cornerRadius = cornerRadius
-        citiesVC.searchButtonAction = { self.searchButtonAction(citiesVC: citiesVC) }
-        citiesVC.backButton.layer.opacity = 1
-        citiesVC.backButton.layer.cornerRadius = cornerRadius
-        citiesVC.backButtonAction = { self.backButtonAction(citiesVC: citiesVC) }
-
+    func configurateButton(button: UIButton, searchMode: Bool) {
+        button.layer.cornerRadius = cornerRadius
+        switch searchMode {
+        case true:
+            button.layer.opacity = 1
+            button.isEnabled = searchMode
+        case false:
+            button.layer.opacity = 0.3
+            button.isEnabled = searchMode
+        }
     }
     
     func setCityCellData(cell: CityTableViewCell, for index: Int) {
@@ -73,8 +84,19 @@ class CitiesPresenter {
     
     func setCitiesSearchData(cell: CitySearchTableViewCell, for index: Int) {
         let model = searchResults[index]
-        citiesSearchCellPresenter.setCellData(cell: cell, model: model)
+        citiesSearchCellPresenter.setCellData(cell: cell, model: model, addButtonAction: { self.addButtonAction(model: model) })
     }
+    
+    func addButtonAction(model: LocationSearchModelElement) {
+        guard let cityName = model.localizedName else { return }
+        guard let cityId = model.key else { return }
+        let newCity = (cityId, cityName)
+        print("Befor Add =", numberOfCities)
+        cities.append(newCity)
+        print("After Add =", numberOfCities)
+        currentConditions.append(nil)
+    }
+
     
 //    private func downloadData() {
 //        for item in cities {
@@ -98,6 +120,7 @@ class CitiesPresenter {
             let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
             print(detailsVC)
             detailsVC.detailsPresenter = detailsPresenter
+            print("Set deetails", numberOfCities)
             detailsPresenter.setDetails(numberOfCities: numberOfCities)
             let cityId = cities[index].0
             let cityName = cities[index].1
@@ -117,11 +140,6 @@ class CitiesPresenter {
         if let cell = cell as? CityTableViewCell {
             setCityCellData(cell: cell, for: indexPath.row)
         }
-        return cell
-    }
-    
-    func setCitiesSearchCells(tableView: UITableView, cellIdentifier: String, indexPath: IndexPath) -> (UITableViewCell) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         if let cell = cell as? CitySearchTableViewCell {
             setCitiesSearchData(cell: cell, for: indexPath.row)
         }

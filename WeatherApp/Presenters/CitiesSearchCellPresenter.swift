@@ -10,7 +10,7 @@ import Foundation
 
 class CitiesSearchCellPresenter {
     
-    func setCellData(cell: CitySearchTableViewCell, model: LocationSearchModelElement) {
+    func setCellData(cell: CitySearchTableViewCell, model: LocationSearchModelElement, addButtonAction: @escaping (() -> ())) {
         cell.selectionStyle = .none
         cell.cityNameLabel.text = model.localizedName
         cell.administrativeAreaLabel.text = model.administrativeArea?.localizedName
@@ -18,5 +18,6 @@ class CitiesSearchCellPresenter {
         cell.viewContainer.layer.backgroundColor = dayBackgroundColor
         cell.viewContainer.layer.cornerRadius = cornerRadius
         cell.addButton.layer.cornerRadius = cornerRadius
+        cell.addButtonAction = addButtonAction
     }
 }
