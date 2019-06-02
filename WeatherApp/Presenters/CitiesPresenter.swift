@@ -16,6 +16,8 @@ class CitiesPresenter {
     let citiesSearchCellPresenter = CitiesSearchCellPresenter()
     let detailsPresenter = DetailsPresenter()
     
+    var citiesViewDelegate: CitiesViewDelegate!
+    
     var cities = [("324505", "Kyiv")
 //                  ("326175", "Vinnytsia"),
 //                  ("22889", "Sydney")
@@ -38,7 +40,7 @@ class CitiesPresenter {
 
     
     func setCitiesView(citiesVC: CitiesViewController) {
-        print("currentconditionsisepty = \(currentConditions.isEmpty)")
+        citiesViewDelegate = citiesVC
         configurateButton(button: citiesVC.searchButton, searchMode: citiesVC.searchMode)
         citiesVC.searchButtonAction = { self.searchButtonAction(citiesVC: citiesVC) }
         configurateButton(button: citiesVC.backButton, searchMode: citiesVC.searchMode)
@@ -57,9 +59,7 @@ class CitiesPresenter {
             if currentConditions.isEmpty {
                 currentConditions = Array(repeating: nil, count: numberOfCities)
             }
-
         }
-        print("currentconditionsisepty = \(currentConditions.isEmpty)")
     }
     
     func configurateButton(button: UIButton, searchMode: Bool) {
@@ -95,6 +95,7 @@ class CitiesPresenter {
         cities.append(newCity)
         print("After Add =", numberOfCities)
         currentConditions.append(nil)
+        citiesViewDelegate.reloadView()
     }
 
     
@@ -114,13 +115,11 @@ class CitiesPresenter {
     
     func presentDetailsController(citiesVC: CitiesViewController, index: Int) {
         if citiesVC.searchMode == false {
-            print("cell tapped")
             let storyboard = UIStoryboard(name: "Details", bundle: nil)
             print(storyboard)
             let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-            print(detailsVC)
             detailsVC.detailsPresenter = detailsPresenter
-            print("Set deetails", numberOfCities)
+            print("Set details = ", numberOfCities)
             detailsPresenter.setDetails(numberOfCities: numberOfCities)
             let cityId = cities[index].0
             let cityName = cities[index].1
@@ -157,28 +156,18 @@ class CitiesPresenter {
     }
     
     func searchButtonAction(citiesVC: CitiesViewController) {
-        print("SearchButton SearchMode before = \(citiesVC.searchMode)")
         citiesVC.searchBar.endEditing(true)
         self.searchText = citiesVC.searchBar.text
         citiesVC.searchBar.text = nil
         self.getSearchResultFor(city: self.searchText, completion: {
             DispatchQueue.main.async {
-                citiesVC.viewDidLoad()
                 citiesVC.tableView.reloadData()
+                citiesVC.viewDidLoad()
             }
         })
-        print("SearchButton SearchMode after = \(citiesVC.searchMode)")
     }
     
     func backButtonAction(citiesVC: CitiesViewController) {
-        print("BackButton SearchMode before = \(citiesVC.searchMode)")
-        citiesVC.searchBar.endEditing(true)
-        citiesVC.searchBar.text = ""
-        citiesVC.searchMode = false
-        DispatchQueue.main.async {
-            citiesVC.viewDidLoad()
-            citiesVC.tableView.reloadData()
+        citiesViewDelegate.reloadView()
         }
-        print("BackButton SearchMode before = \(citiesVC.searchMode)")
-    }
 }

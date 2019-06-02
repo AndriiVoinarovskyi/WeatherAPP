@@ -40,14 +40,33 @@ class DataService {
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
-            do {
-                let model = try decoder.decode(Type?.self, from: data)
+//            do {
+//                let model = try decoder.decode(Type?.self, from: data)
+//                completion(model)
+//            } catch {
+//                print(error.localizedDescription)
+//
+//            }
+            self.decodeData(data: data, decoder: decoder, completion: { (model: Type?) in
                 completion(model)
-            } catch {
-                print(error.localizedDescription)
-            }
+            })
         }
         print("network activity")
         task.resume()
+    }
+    
+    func decodeData<T:Codable>(data: Data, decoder: JSONDecoder, completion: ((T?) -> ())){
+        do {
+            let model = try decoder.decode(T.self, from: data)
+            completion(model)
+        }
+        catch {
+            print(error.localizedDescription)
+            decodeData(data: data, decoder: decoder) { (model: ServiceUnavailable?) in
+                guard let message = model?.message else { return }
+                print(message)
+                
+            }
+        }
     }
 }

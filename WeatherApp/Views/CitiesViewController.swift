@@ -15,6 +15,7 @@ class CitiesViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    
     var searchButtonAction: (() -> ())?
     var backButtonAction: (() -> ())?
     
@@ -24,7 +25,6 @@ class CitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Set View")
         citiesPresenter.setCitiesView(citiesVC: self)
         
         // Do any additional setup after loading the view.
@@ -77,12 +77,20 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
 extension CitiesViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("SearchBar SearchMode before = \(searchMode)")
         searchMode = true
         DispatchQueue.main.async {
 //            self.tableView.isHidden = true
             self.viewDidLoad()
         }
-        print("SearchBar SearchMode after = \(searchMode)")
+    }
+}
+
+extension CitiesViewController: CitiesViewDelegate {
+    func reloadView() {
+        searchBar.endEditing(true)
+        searchBar.text = ""
+        searchMode = false
+        tableView.reloadData()
+        self.viewDidLoad()
     }
 }
