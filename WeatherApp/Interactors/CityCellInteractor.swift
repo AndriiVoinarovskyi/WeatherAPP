@@ -10,8 +10,15 @@ import Foundation
 
 class CityCellInteractor {
     
+    let citiesViewAlertDelegate: VCAlertDelegate
+    
+    init(citiesViewAlertDelegate: VCAlertDelegate) {
+        self.citiesViewAlertDelegate = citiesViewAlertDelegate
+    }
+    
+    
     func getCurrentConditions(for cityId: String, completion: @escaping (CurrentConditionsModel)->()) {
-        DataService.shared.getData(for: .currentConditions, cityId: cityId, parameters: nil) { (currentConditionsModel: CurrentConditionsModel?) in
+        DataService.shared.getData(for: .currentConditions, cityId: cityId, parameters: nil, vcDelegate: citiesViewAlertDelegate) { (currentConditionsModel: CurrentConditionsModel?) in
             guard let currentConditionsModel = currentConditionsModel else { return }
             completion(currentConditionsModel)
         }

@@ -105,6 +105,11 @@
                                     <outlet property="delegate" destination="H8Z-Xe-KF6" id="MfX-d4-ZqI"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="jDs-rw-PM7" userLabel="HourlyForecastActivityIndicator">
+                                <rect key="frame" x="8" y="272.5" width="304" height="85.5"/>
+                                <color key="backgroundColor" red="0.08747517317533493" green="0.76592367887496948" blue="0.77657288312911987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wGY-Qr-qPx" userLabel="DailyForecastsCollectionView">
                                 <rect key="frame" x="8" y="387" width="304" height="85"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -191,6 +196,11 @@
                                     <outlet property="delegate" destination="H8Z-Xe-KF6" id="sXA-xI-9Ns"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WSs-77-pZK" userLabel="DailyForecastActivityIndicator">
+                                <rect key="frame" x="8" y="387" width="304" height="85"/>
+                                <color key="backgroundColor" red="0.08747517317533493" green="0.76592367887496948" blue="0.77657288312911987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forecast for 12 hours:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4T-vr-Dul">
                                 <rect key="frame" x="8" y="248" width="166.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -211,16 +221,23 @@
                             <constraint firstItem="AUi-F6-iT9" firstAttribute="leading" secondItem="U5Y-q7-Cw3" secondAttribute="leading" constant="8" id="6FL-rr-m7h"/>
                             <constraint firstItem="Yx9-Fb-cfv" firstAttribute="trailing" secondItem="U5Y-q7-Cw3" secondAttribute="trailing" constant="-8" id="6a7-0H-TAL"/>
                             <constraint firstItem="LIQ-sw-Wan" firstAttribute="top" secondItem="T0A-Ep-BIL" secondAttribute="bottom" constant="4" id="9R3-Ch-6tF"/>
+                            <constraint firstItem="WSs-77-pZK" firstAttribute="width" secondItem="wGY-Qr-qPx" secondAttribute="width" id="BEi-EX-dmy"/>
                             <constraint firstItem="wGY-Qr-qPx" firstAttribute="top" secondItem="LIQ-sw-Wan" secondAttribute="bottom" constant="4" id="Dbo-TW-aeb"/>
+                            <constraint firstItem="jDs-rw-PM7" firstAttribute="centerY" secondItem="T0A-Ep-BIL" secondAttribute="centerY" id="F7z-IK-sWy"/>
+                            <constraint firstItem="jDs-rw-PM7" firstAttribute="width" secondItem="T0A-Ep-BIL" secondAttribute="width" id="GVK-0v-IQn"/>
                             <constraint firstItem="U5Y-q7-Cw3" firstAttribute="trailing" secondItem="AUi-F6-iT9" secondAttribute="trailing" constant="8" id="IYW-dn-uYm"/>
                             <constraint firstItem="jov-90-6Zn" firstAttribute="centerX" secondItem="U5Y-q7-Cw3" secondAttribute="centerX" id="Irf-MG-at6"/>
                             <constraint firstItem="aIh-Wf-XrC" firstAttribute="leading" secondItem="U5Y-q7-Cw3" secondAttribute="leading" constant="8" id="JOH-Df-y7v"/>
+                            <constraint firstItem="WSs-77-pZK" firstAttribute="centerY" secondItem="wGY-Qr-qPx" secondAttribute="centerY" id="NvA-zf-xvV"/>
+                            <constraint firstItem="WSs-77-pZK" firstAttribute="height" secondItem="wGY-Qr-qPx" secondAttribute="height" id="PBE-Fl-xxl"/>
                             <constraint firstItem="T0A-Ep-BIL" firstAttribute="top" secondItem="s4T-vr-Dul" secondAttribute="bottom" constant="4" id="QkY-dQ-fxu"/>
                             <constraint firstItem="U5Y-q7-Cw3" firstAttribute="trailing" secondItem="wGY-Qr-qPx" secondAttribute="trailing" constant="8" id="REf-4U-sqq"/>
                             <constraint firstItem="aIh-Wf-XrC" firstAttribute="top" secondItem="U5Y-q7-Cw3" secondAttribute="top" constant="8" id="Sqb-CU-Vge"/>
+                            <constraint firstItem="jDs-rw-PM7" firstAttribute="height" secondItem="T0A-Ep-BIL" secondAttribute="height" id="UTU-N1-qBt"/>
                             <constraint firstItem="wGY-Qr-qPx" firstAttribute="height" secondItem="T0A-Ep-BIL" secondAttribute="height" id="XnL-sK-cD0"/>
                             <constraint firstItem="T0A-Ep-BIL" firstAttribute="leading" secondItem="U5Y-q7-Cw3" secondAttribute="leading" constant="8" id="ZbS-I8-Hxb"/>
                             <constraint firstItem="tvf-rE-Mr7" firstAttribute="top" secondItem="aIh-Wf-XrC" secondAttribute="bottom" constant="8" id="aTj-7v-aGq"/>
+                            <constraint firstItem="WSs-77-pZK" firstAttribute="centerX" secondItem="wGY-Qr-qPx" secondAttribute="centerX" id="dY1-Pf-yoC"/>
                             <constraint firstItem="tvf-rE-Mr7" firstAttribute="leading" secondItem="U5Y-q7-Cw3" secondAttribute="leading" constant="8" id="dty-m8-ubo"/>
                             <constraint firstItem="wGY-Qr-qPx" firstAttribute="leading" secondItem="U5Y-q7-Cw3" secondAttribute="leading" constant="8" id="eKg-rF-Zeo"/>
                             <constraint firstItem="U5Y-q7-Cw3" firstAttribute="trailing" secondItem="tvf-rE-Mr7" secondAttribute="trailing" constant="8" id="faq-x0-ZUR"/>
@@ -233,13 +250,16 @@
                             <constraint firstItem="s4T-vr-Dul" firstAttribute="leading" secondItem="U5Y-q7-Cw3" secondAttribute="leading" constant="8" id="nkL-0n-ChK"/>
                             <constraint firstItem="U5Y-q7-Cw3" firstAttribute="trailing" secondItem="T0A-Ep-BIL" secondAttribute="trailing" constant="8" id="oVE-vN-TR8"/>
                             <constraint firstItem="jov-90-6Zn" firstAttribute="height" secondItem="8Zd-KE-ugo" secondAttribute="height" multiplier="0.45" id="ods-v8-A01"/>
+                            <constraint firstItem="jDs-rw-PM7" firstAttribute="centerX" secondItem="T0A-Ep-BIL" secondAttribute="centerX" id="ztA-LX-oYk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U5Y-q7-Cw3"/>
                     </view>
                     <connections>
                         <outlet property="cityNameLabel" destination="aIh-Wf-XrC" id="as5-t7-tmR"/>
+                        <outlet property="dailyForecastsActivityIndicator" destination="WSs-77-pZK" id="AmO-c3-uAl"/>
                         <outlet property="dailyForecastsCollectionView" destination="wGY-Qr-qPx" id="hev-TV-xOP"/>
                         <outlet property="dateTimeLabel" destination="tvf-rE-Mr7" id="jJS-h6-S3c"/>
+                        <outlet property="hourlyForecastsActivityIndicator" destination="jDs-rw-PM7" id="3n4-hJ-miQ"/>
                         <outlet property="hourlyForecastsCollectionView" destination="T0A-Ep-BIL" id="nH3-t8-Yse"/>
                         <outlet property="temperatureLabel" destination="Yx9-Fb-cfv" id="o0I-xy-yzK"/>
                         <outlet property="weatherIconImageView" destination="jov-90-6Zn" id="3Hc-p7-AgI"/>

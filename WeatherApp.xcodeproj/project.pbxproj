@@ -16,6 +16,8 @@
 		B031D50C2297D66C009AB8B6 /* CityCellInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031D50B2297D66C009AB8B6 /* CityCellInteractor.swift */; };
 		B05A520322A3AEAE007F5ACC /* ServiceUnavailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A520222A3AEAE007F5ACC /* ServiceUnavailable.swift */; };
 		B05A520C22A3E311007F5ACC /* CitiesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A520B22A3E311007F5ACC /* CitiesViewDelegate.swift */; };
+		B05A520E22A40CD4007F5ACC /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A520D22A40CD4007F5ACC /* Alert.swift */; };
+		B05A521022A410F5007F5ACC /* VCAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A520F22A410F5007F5ACC /* VCAlertDelegate.swift */; };
 		B06050FA229577ED00F98EC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06050F9229577ED00F98EC2 /* AppDelegate.swift */; };
 		B0605102229577ED00F98EC2 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0605100229577ED00F98EC2 /* WeatherApp.xcdatamodeld */; };
 		B0605104229577EE00F98EC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0605103229577EE00F98EC2 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		B031D50B2297D66C009AB8B6 /* CityCellInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellInteractor.swift; sourceTree = "<group>"; };
 		B05A520222A3AEAE007F5ACC /* ServiceUnavailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUnavailable.swift; sourceTree = "<group>"; };
 		B05A520B22A3E311007F5ACC /* CitiesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewDelegate.swift; sourceTree = "<group>"; };
+		B05A520D22A40CD4007F5ACC /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B05A520F22A410F5007F5ACC /* VCAlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCAlertDelegate.swift; sourceTree = "<group>"; };
 		B06050F6229577ED00F98EC2 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06050F9229577ED00F98EC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0605101229577ED00F98EC2 /* WeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherApp.xcdatamodel; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				B05A520B22A3E311007F5ACC /* CitiesViewDelegate.swift */,
+				B05A520F22A410F5007F5ACC /* VCAlertDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				B00B83B5229C2581007D0329 /* HourlyForecastsCollectionViewCell.swift */,
 				B00B83B7229C2F25007D0329 /* DailyForecastsCollectionViewCell.swift */,
 				B0D826E2229ED05300787E23 /* ForecastsCollectionViewLayout.swift */,
+				B05A520D22A40CD4007F5ACC /* Alert.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 				B07C603E2295938000E34E90 /* CurrentConditionsModel.swift in Sources */,
 				B031D5082297C9FF009AB8B6 /* Globals.swift in Sources */,
 				B07C603022957E9A00E34E90 /* CitiesViewController.swift in Sources */,
+				B05A521022A410F5007F5ACC /* VCAlertDelegate.swift in Sources */,
 				B0605102229577ED00F98EC2 /* WeatherApp.xcdatamodeld in Sources */,
 				B0695B1C22996D51006F7EC0 /* DetailsPresenter.swift in Sources */,
 				B07C603822958D2000E34E90 /* CityCellPresenter.swift in Sources */,
@@ -433,6 +440,7 @@
 				B05A520322A3AEAE007F5ACC /* ServiceUnavailable.swift in Sources */,
 				B0D826D9229EB51200787E23 /* DateTimeFormatter.swift in Sources */,
 				B06050FA229577ED00F98EC2 /* AppDelegate.swift in Sources */,
+				B05A520E22A40CD4007F5ACC /* Alert.swift in Sources */,
 				B07C6040229593A700E34E90 /* HourlyForecastsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

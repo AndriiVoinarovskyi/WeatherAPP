@@ -1,5 +1,5 @@
 //
-//  CitiesViewDelegate.swift
+//  CitiesViewAlertDelegate.swift
 //  WeatherApp
 //
 //  Created by Macbook Pro 13 on 06.02.19.
@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-protocol CitiesViewDelegate {
-    func reloadView()
+protocol VCAlertDelegate {
+    func showAlert(alert: UIAlertController)
 }

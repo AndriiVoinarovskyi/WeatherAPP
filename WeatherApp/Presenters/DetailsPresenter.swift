@@ -16,7 +16,14 @@ class DetailsPresenter {
     var numberOfHourlyForecasts: Int = 0
     var numberOfDailyForecasts: Int = 0
     
-    let detailsInteractor = DetailsInteractor()
+    var detailsViewAlertDelegate: VCAlertDelegate!
+    
+    var detailsInteractor: DetailsInteractor {
+        get {
+            return DetailsInteractor(detailsViewAlertDelegate: detailsViewAlertDelegate)
+        }
+    }
+    
     let hourlyForecastsCollectionViewCellPresenter = HourlyForecastsCollectionViewCellPresenter()
     let dailyForecastsCollectionViewCellPresenter = DailyForecastsCollectionViewCellPresenter()
     
@@ -53,6 +60,7 @@ class DetailsPresenter {
     
     func setDataInVC(detailsVC: DetailsViewController) {
         detailsVC.title = "Weather details"
+        detailsViewAlertDelegate = detailsVC
         guard let item = details?[index] else { return }
         detailsVC.cityNameLabel.text = item.cityName
         guard let dateTime = item.dateTime else { return }
@@ -71,23 +79,27 @@ class DetailsPresenter {
         let cityId = item.cityId
         
         if details?[index]?.hourlyForecasts == nil {
+            detailsVC.hourlyForecastsActivityIndicator.startAnimating()
             detailsInteractor.getHourlyForecasts(cityId: cityId) { [weak self] (hourlyForecastsModel: HourlyForecastsModel) in
                 guard let index = self?.index else { return }
                 self?.details?[index]?.hourlyForecasts = hourlyForecastsModel
                 self?.numberOfHourlyForecasts = hourlyForecastsModel.count
                 DispatchQueue.main.async {
                     detailsVC.hourlyForecastsCollectionView.reloadData()
+                    detailsVC.hourlyForecastsActivityIndicator.stopAnimating()
                 }
             }
         }
         
         if details?[index]?.dailyForecasts == nil {
+            detailsVC.dailyForecastsActivityIndicator.startAnimating()
             detailsInteractor.getDailyForecasts(cityId: cityId) { [weak self] (dailyForecasts: [DailyForecast]) in
                 guard let index = self?.index else { return }
                 self?.details?[index]?.dailyForecasts = dailyForecasts
                 self?.numberOfDailyForecasts = dailyForecasts.count
                 DispatchQueue.main.async {
                     detailsVC.dailyForecastsCollectionView.reloadData()
+                    detailsVC.dailyForecastsActivityIndicator.stopAnimating()
                 }
             }
         }

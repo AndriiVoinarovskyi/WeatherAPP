@@ -30,7 +30,7 @@ class DataService {
 
     static let shared = DataService()
     
-    func getData<Type: Codable>(for requestName: RequestName, cityId: String?, parameters: Parameters, completion: @escaping (Type?)->()) {
+    func getData<Type: Codable>(for requestName: RequestName, cityId: String?, parameters: Parameters, vcDelegate: VCAlertDelegate, completion: @escaping (Type?)->()) {
         let baseLink = requestName.string
         guard let url = URLMaker.shared.getURL(baseLink: baseLink, cityId: cityId, parameters: parameters) else { return }
         var request = URLRequest(url: url)
@@ -38,16 +38,12 @@ class DataService {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
+            guard let data = data else {
+                let alert = Alert()
+                alert.showAlert(title: internetConnectionError, message: internetConnectionErrorMessage, vcDelegate: vcDelegate)
+                return }
             let decoder = JSONDecoder()
-//            do {
-//                let model = try decoder.decode(Type?.self, from: data)
-//                completion(model)
-//            } catch {
-//                print(error.localizedDescription)
-//
-//            }
-            self.decodeData(data: data, decoder: decoder, completion: { (model: Type?) in
+            self.decodeData(data: data, decoder: decoder, vcDel: vcDelegate, completion: { (model: Type?) in
                 completion(model)
             })
         }
@@ -55,17 +51,18 @@ class DataService {
         task.resume()
     }
     
-    func decodeData<T:Codable>(data: Data, decoder: JSONDecoder, completion: ((T?) -> ())){
+    func decodeData<T: Codable>(data: Data, decoder: JSONDecoder, vcDel: VCAlertDelegate, completion: ((T?) -> ())){
         do {
             let model = try decoder.decode(T.self, from: data)
             completion(model)
         }
         catch {
             print(error.localizedDescription)
-            decodeData(data: data, decoder: decoder) { (model: ServiceUnavailable?) in
+            decodeData(data: data, decoder: decoder, vcDel: vcDel) { (model: ServiceUnavailable?) in
                 guard let message = model?.message else { return }
+                let alert = Alert()
+                alert.showAlert(title: message, message: serviceUnavailableErrorMessage, vcDelegate: vcDel)
                 print(message)
-                
             }
         }
     }

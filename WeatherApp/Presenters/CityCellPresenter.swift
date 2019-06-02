@@ -11,7 +11,17 @@ import UIKit
 
 class CityCellPresenter {
     
-    let cityCellInteractor = CityCellInteractor()
+    let citiesViewAlertDelegate: VCAlertDelegate
+    
+    init(citiesViewAlertDelegate: VCAlertDelegate) {
+        self.citiesViewAlertDelegate = citiesViewAlertDelegate
+    }
+    
+    var cityCellInteractor: CityCellInteractor {
+        get {
+            return CityCellInteractor(citiesViewAlertDelegate: citiesViewAlertDelegate)
+        }
+    }
     
     var metricTemperatureText = "N/A"
     var imperialTemperatureText = "N/A"
@@ -25,6 +35,7 @@ class CityCellPresenter {
         cell.temperatureLabel.textColor = dayFontColor
         
         guard let currentConditions = currentConditions else {
+            cell.currentConditionsActivityIndicator.startAnimating()
             cityCellInteractor.getCurrentConditions(for: cityId) { [weak self] (model) in
                 guard let model = model.first else { return }
                 guard let currentConditions = model else { return }
@@ -50,6 +61,7 @@ class CityCellPresenter {
             }
             cell.temperatureLabel.text = temperatureText
             cell.currentConditionsImage.image = UIImage(named: weatherIcon)
+            cell.currentConditionsActivityIndicator.stopAnimating()
         }
     }
 }

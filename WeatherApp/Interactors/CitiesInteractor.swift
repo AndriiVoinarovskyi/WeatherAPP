@@ -10,8 +10,15 @@ import Foundation
 
 class CitiesInteractor {
     
+    let citiesViewAlertDelegate: VCAlertDelegate
+    
+    init(citiesViewAlertDelegate: VCAlertDelegate) {
+        self.citiesViewAlertDelegate = citiesViewAlertDelegate
+    }
+    
     func getSearchResult(for city: String, completion: @escaping (LocationSearchModel) -> ()) {
-        DataService.shared.getData(for: .locationSearch, cityId: nil, parameters: ["q": city]) { (locationSearchModel: LocationSearchModel?) in
+        
+        DataService.shared.getData(for: .locationSearch, cityId: nil, parameters: ["q": city], vcDelegate: citiesViewAlertDelegate) { (locationSearchModel: LocationSearchModel?) in
             guard let locationSearchModel = locationSearchModel else { return }
             completion(locationSearchModel)
         }

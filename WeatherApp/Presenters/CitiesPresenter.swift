@@ -11,12 +11,22 @@ import UIKit
 
 class CitiesPresenter {
     
-    let citiesInteractor = CitiesInteractor()
-    let cityCellPresenter = CityCellPresenter()
-    let citiesSearchCellPresenter = CitiesSearchCellPresenter()
-    let detailsPresenter = DetailsPresenter()
-    
     var citiesViewDelegate: CitiesViewDelegate!
+    var citiesViewAlertDelegate: VCAlertDelegate!
+    
+    var citiesInteractor: CitiesInteractor {
+        get {
+            return CitiesInteractor(citiesViewAlertDelegate: citiesViewAlertDelegate)
+        }
+    }
+    var  cityCellPresenter: CityCellPresenter {
+        get {
+            return CityCellPresenter(citiesViewAlertDelegate: citiesViewAlertDelegate)
+        }
+    }
+    
+    var citiesSearchCellPresenter = CitiesSearchCellPresenter()
+    var detailsPresenter = DetailsPresenter()
     
     var cities = [("324505", "Kyiv")
 //                  ("326175", "Vinnytsia"),
@@ -41,6 +51,8 @@ class CitiesPresenter {
     
     func setCitiesView(citiesVC: CitiesViewController) {
         citiesViewDelegate = citiesVC
+        citiesViewAlertDelegate = citiesVC
+        citiesVC.searchActivityIndicator.stopAnimating()
         configurateButton(button: citiesVC.searchButton, searchMode: citiesVC.searchMode)
         citiesVC.searchButtonAction = { self.searchButtonAction(citiesVC: citiesVC) }
         configurateButton(button: citiesVC.backButton, searchMode: citiesVC.searchMode)
@@ -159,9 +171,11 @@ class CitiesPresenter {
         citiesVC.searchBar.endEditing(true)
         self.searchText = citiesVC.searchBar.text
         citiesVC.searchBar.text = nil
+        citiesVC.searchActivityIndicator.startAnimating()
         self.getSearchResultFor(city: self.searchText, completion: {
             DispatchQueue.main.async {
                 citiesVC.tableView.reloadData()
+                citiesVC.searchActivityIndicator.stopAnimating()
                 citiesVC.viewDidLoad()
             }
         })

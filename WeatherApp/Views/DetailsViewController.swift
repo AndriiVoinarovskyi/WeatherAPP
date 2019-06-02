@@ -20,8 +20,10 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var hourlyForecastsCollectionView: UICollectionView!
     @IBOutlet weak var dailyForecastsCollectionView: UICollectionView!
     
-    var detailsPresenter = DetailsPresenter()
+    @IBOutlet weak var hourlyForecastsActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var dailyForecastsActivityIndicator: UIActivityIndicatorView!
     
+    var detailsPresenter = DetailsPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,5 +72,11 @@ extension DetailsViewController: UICollectionViewDataSource, UICollectionViewDel
             detailsPresenter.setDailyForecastsCollectionViewCell(cell: cell, index: indexPath.row, cellHeight: cellHeight)
             return cell
         }
+    }
+}
+
+extension DetailsViewController: VCAlertDelegate {
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
     }
 }

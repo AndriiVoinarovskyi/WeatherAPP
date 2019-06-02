@@ -20,3 +20,8 @@ let searchResultsRowHeight: CGFloat = 90
 let widthForecastsCell: CGFloat = 100
 
 let cornerRadius: CGFloat = 8
+
+let internetConnectionError = "You have a problem with internet connection"
+let internetConnectionErrorMessage = "Please, check your internet connection and try again"
+
+let serviceUnavailableErrorMessage = "Please, try again later"

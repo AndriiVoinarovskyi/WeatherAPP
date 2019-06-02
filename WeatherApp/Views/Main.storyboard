@@ -46,27 +46,32 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxQ-AC-yfs">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="62"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="62"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CityNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgC-x3-BVu">
-                                                            <rect key="frame" x="8.0000000000000071" y="8" width="116.66666666666669" height="46"/>
+                                                            <rect key="frame" x="8" y="8" width="199" height="46"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPC-Ku-IKc" userLabel="CurrentConditionsImageView">
-                                                            <rect key="frame" x="132.66666666666666" y="0.0" width="93" height="62"/>
+                                                            <rect key="frame" x="289" y="0.0" width="93" height="62"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="uPC-Ku-IKc" secondAttribute="height" multiplier="1.5:1" id="lub-eF-Og4"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TemperatureLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4jL-KZ-3J2">
-                                                            <rect key="frame" x="233.66666666666666" y="8" width="117.33333333333334" height="46"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4jL-KZ-3J2">
+                                                            <rect key="frame" x="390" y="8" width="0.0" height="46"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="oYy-yv-tMj" userLabel="CurrentConditionsActivityIndicator">
+                                                            <rect key="frame" x="215" y="0.0" width="183" height="62"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -80,7 +85,11 @@
                                                         <constraint firstItem="SgC-x3-BVu" firstAttribute="width" secondItem="cxQ-AC-yfs" secondAttribute="width" multiplier="0.5" priority="750" id="Pq0-6R-RLd"/>
                                                         <constraint firstItem="uPC-Ku-IKc" firstAttribute="centerY" secondItem="SgC-x3-BVu" secondAttribute="centerY" id="Upu-B1-Is6"/>
                                                         <constraint firstItem="4jL-KZ-3J2" firstAttribute="height" secondItem="SgC-x3-BVu" secondAttribute="height" id="XVn-2E-CMS"/>
+                                                        <constraint firstItem="oYy-yv-tMj" firstAttribute="top" secondItem="cxQ-AC-yfs" secondAttribute="top" id="Yhk-aT-nzA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oYy-yv-tMj" secondAttribute="trailing" id="dHj-BJ-xU0"/>
+                                                        <constraint firstItem="oYy-yv-tMj" firstAttribute="leading" secondItem="SgC-x3-BVu" secondAttribute="trailing" constant="8" id="hGX-pu-uaI"/>
                                                         <constraint firstAttribute="bottom" secondItem="SgC-x3-BVu" secondAttribute="bottom" constant="8" id="oDr-Y3-6E1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oYy-yv-tMj" secondAttribute="bottom" id="wLj-c7-Qby"/>
                                                         <constraint firstItem="uPC-Ku-IKc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SgC-x3-BVu" secondAttribute="trailing" constant="8" id="zMB-Ga-rEQ"/>
                                                     </constraints>
                                                 </view>
@@ -96,6 +105,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cityNameLabel" destination="SgC-x3-BVu" id="0wM-Qf-Z9n"/>
+                                            <outlet property="currentConditionsActivityIndicator" destination="oYy-yv-tMj" id="8KK-uz-xer"/>
                                             <outlet property="currentConditionsImage" destination="uPC-Ku-IKc" id="jZd-Zg-yh2"/>
                                             <outlet property="temperatureLabel" destination="4jL-KZ-3J2" id="AQi-DR-OYP"/>
                                             <outlet property="viewContainer" destination="cxQ-AC-yfs" id="Jf6-xd-hKg"/>
@@ -209,6 +219,11 @@
                                     <action selector="backButtonTapped:" destination="7yG-ab-vVb" eventType="touchUpInside" id="Vas-UA-8CI"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="r9m-Th-iLH" userLabel="SearchActivityIndicator">
+                                <rect key="frame" x="8" y="152" width="414" height="718"/>
+                                <color key="backgroundColor" red="0.08747517317533493" green="0.76592367887496948" blue="0.77657288312911987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.08747517317533493" green="0.76592367887496948" blue="0.77657288312911987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -218,20 +233,25 @@
                             <constraint firstItem="bkh-Tg-ZBU" firstAttribute="top" secondItem="oQn-Iq-4DG" secondAttribute="top" constant="10" id="Dmm-sI-Dd5"/>
                             <constraint firstItem="PyZ-ST-Xlx" firstAttribute="leading" secondItem="oQn-Iq-4DG" secondAttribute="leading" constant="8" id="HQr-Jf-WS2"/>
                             <constraint firstItem="JhU-To-pVq" firstAttribute="top" secondItem="PyZ-ST-Xlx" secondAttribute="bottom" constant="18" id="JNL-v3-Bl6"/>
+                            <constraint firstItem="r9m-Th-iLH" firstAttribute="trailing" secondItem="oQn-Iq-4DG" secondAttribute="trailing" constant="8" id="M3J-xh-ykh"/>
                             <constraint firstItem="bkh-Tg-ZBU" firstAttribute="leading" secondItem="ExY-9S-jWa" secondAttribute="trailing" id="OBk-JA-tKh"/>
                             <constraint firstItem="JhU-To-pVq" firstAttribute="leading" secondItem="oQn-Iq-4DG" secondAttribute="leading" constant="8" id="R2c-23-O9x"/>
+                            <constraint firstItem="r9m-Th-iLH" firstAttribute="bottom" secondItem="oQn-Iq-4DG" secondAttribute="bottom" constant="8" id="Sng-ST-9XJ"/>
                             <constraint firstItem="oQn-Iq-4DG" firstAttribute="trailing" secondItem="bkh-Tg-ZBU" secondAttribute="trailing" constant="8" id="VjO-rn-929"/>
                             <constraint firstItem="JhU-To-pVq" firstAttribute="top" secondItem="ExY-9S-jWa" secondAttribute="bottom" constant="8" id="abG-13-OfP"/>
                             <constraint firstItem="JhU-To-pVq" firstAttribute="top" secondItem="bkh-Tg-ZBU" secondAttribute="bottom" constant="18" id="ad6-yQ-pBd"/>
                             <constraint firstItem="ExY-9S-jWa" firstAttribute="top" secondItem="3mG-57-UoY" secondAttribute="topMargin" id="fIi-AB-afz"/>
                             <constraint firstItem="oQn-Iq-4DG" firstAttribute="trailing" secondItem="JhU-To-pVq" secondAttribute="trailing" constant="8" id="i3X-F7-FGT"/>
                             <constraint firstItem="bkh-Tg-ZBU" firstAttribute="width" secondItem="PyZ-ST-Xlx" secondAttribute="width" id="qNU-CH-bHw"/>
+                            <constraint firstItem="r9m-Th-iLH" firstAttribute="leading" secondItem="oQn-Iq-4DG" secondAttribute="leading" constant="8" id="uNz-zL-QGB"/>
+                            <constraint firstItem="r9m-Th-iLH" firstAttribute="top" secondItem="ExY-9S-jWa" secondAttribute="bottom" constant="8" id="zsz-uG-q3H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oQn-Iq-4DG"/>
                     </view>
                     <navigationItem key="navigationItem" id="2u1-nt-Nte"/>
                     <connections>
                         <outlet property="backButton" destination="PyZ-ST-Xlx" id="EDu-83-Dzw"/>
+                        <outlet property="searchActivityIndicator" destination="r9m-Th-iLH" id="u0H-ji-QkS"/>
                         <outlet property="searchBar" destination="ExY-9S-jWa" id="YoU-UQ-1Oq"/>
                         <outlet property="searchButton" destination="bkh-Tg-ZBU" id="aYL-lf-oHm"/>
                         <outlet property="tableView" destination="JhU-To-pVq" id="OrK-bE-QSC"/>

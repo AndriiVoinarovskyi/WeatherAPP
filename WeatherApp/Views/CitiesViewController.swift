@@ -14,7 +14,7 @@ class CitiesViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var searchActivityIndicator: UIActivityIndicatorView!
     
     var searchButtonAction: (() -> ())?
     var backButtonAction: (() -> ())?
@@ -86,6 +86,7 @@ extension CitiesViewController: UISearchBarDelegate {
 }
 
 extension CitiesViewController: CitiesViewDelegate {
+    
     func reloadView() {
         searchBar.endEditing(true)
         searchBar.text = ""
@@ -93,4 +94,12 @@ extension CitiesViewController: CitiesViewDelegate {
         tableView.reloadData()
         self.viewDidLoad()
     }
+}
+
+extension CitiesViewController: VCAlertDelegate {
+    
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
