@@ -32,7 +32,11 @@ class DataService {
     
     func getData<Type: Codable>(for requestName: RequestName, cityId: String?, parameters: Parameters, vcDelegate: VCAlertDelegate, completion: @escaping (Type?)->()) {
         let baseLink = requestName.string
-        guard let url = URLMaker.shared.getURL(baseLink: baseLink, cityId: cityId, parameters: parameters) else { return }
+        guard let url = URLMaker.shared.getURL(baseLink: baseLink, cityId: cityId, parameters: parameters) else {
+            let alert = Alert()
+            alert.showAlert(title: linkError, message: linkErrorMessage, vcDelegate: vcDelegate)
+            return
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
@@ -41,17 +45,19 @@ class DataService {
             guard let data = data else {
                 let alert = Alert()
                 alert.showAlert(title: internetConnectionError, message: internetConnectionErrorMessage, vcDelegate: vcDelegate)
-                return }
+                return
+            }
             let decoder = JSONDecoder()
             self.decodeData(data: data, decoder: decoder, vcDel: vcDelegate, completion: { (model: Type?) in
                 completion(model)
+                print("Data retrieved")
             })
         }
         print("network activity")
         task.resume()
     }
     
-    func decodeData<T: Codable>(data: Data, decoder: JSONDecoder, vcDel: VCAlertDelegate, completion: ((T?) -> ())){
+    private func decodeData<T: Codable>(data: Data, decoder: JSONDecoder, vcDel: VCAlertDelegate, completion: ((T?) -> ())){
         do {
             let model = try decoder.decode(T.self, from: data)
             completion(model)

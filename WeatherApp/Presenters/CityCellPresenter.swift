@@ -36,10 +36,10 @@ class CityCellPresenter {
         
         guard let currentConditions = currentConditions else {
             cell.currentConditionsActivityIndicator.startAnimating()
-            cityCellInteractor.getCurrentConditions(for: cityId) { [weak self] (model) in
+            cityCellInteractor.getCurrentConditions(for: cityId) { (model) in
                 guard let model = model.first else { return }
                 guard let currentConditions = model else { return }
-                self?.cellConfiguration(cell: cell, model: currentConditions)
+                self.cellConfiguration(cell: cell, model: currentConditions)
                 completion(currentConditions)
             }
             return

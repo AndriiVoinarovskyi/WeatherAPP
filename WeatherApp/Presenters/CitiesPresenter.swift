@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class CitiesPresenter {
     
@@ -28,10 +29,13 @@ class CitiesPresenter {
     var citiesSearchCellPresenter = CitiesSearchCellPresenter()
     var detailsPresenter = DetailsPresenter()
     
-    var cities = [("324505", "Kyiv")
+    
+    let realm = try! Realm()
+    
+    var cities: Results<Cities>!// = [//("324505", "Kyiv")
 //                  ("326175", "Vinnytsia"),
 //                  ("22889", "Sydney")
-                 ]
+//                 ]
     var numberOfCities: Int {
         get {
             return cities.count
@@ -50,6 +54,10 @@ class CitiesPresenter {
 
     
     func setCitiesView(citiesVC: CitiesViewController) {
+        if realm.objects(Cities.self).isEmpty {
+            initialiseRealmDB()
+        }
+        cities = realm.objects(Cities.self)
         citiesViewDelegate = citiesVC
         citiesViewAlertDelegate = citiesVC
         citiesVC.searchActivityIndicator.stopAnimating()
@@ -74,6 +82,19 @@ class CitiesPresenter {
         }
     }
     
+    func initialiseRealmDB() {
+        let kyiv = Cities()
+        kyiv.cityId = "324505"
+        kyiv.cityName = "Kyiv"
+        let vinnytsia = Cities()
+        vinnytsia.cityId = "326175"
+        vinnytsia.cityName = "Vinnytsia"
+        try! realm.write {
+            realm.add(kyiv)
+            realm.add(vinnytsia)
+        }
+    }
+    
     func configurateButton(button: UIButton, searchMode: Bool) {
         button.layer.cornerRadius = cornerRadius
         switch searchMode {
@@ -87,8 +108,8 @@ class CitiesPresenter {
     }
     
     func setCityCellData(cell: CityTableViewCell, for index: Int) {
-        let cityId = cities[index].0
-        let cityName = cities[index].1
+        let cityId = cities[index].cityId
+        let cityName = cities[index].cityName
         cityCellPresenter.setCellData(cell: cell, cityId: cityId, cityName: cityName, currentConditions: currentConditions[index]) { [weak self] (currentConditions) in
             self?.currentConditions[index] = currentConditions
         }
@@ -102,39 +123,24 @@ class CitiesPresenter {
     func addButtonAction(model: LocationSearchModelElement) {
         guard let cityName = model.localizedName else { return }
         guard let cityId = model.key else { return }
-        let newCity = (cityId, cityName)
-        print("Befor Add =", numberOfCities)
-        cities.append(newCity)
-        print("After Add =", numberOfCities)
+        let newCity = Cities()
+        newCity.cityId = cityId
+        newCity.cityName = cityName
+        try! realm.write {
+            realm.add(newCity)
+        }
         currentConditions.append(nil)
         citiesViewDelegate.reloadView()
     }
-
-    
-//    private func downloadData() {
-//        for item in cities {
-//            let downloadGroup = DispatchGroup()
-//            let cityId = item.0
-//            downloadGroup.enter()
-//            DataService.shared.getData(for: .currentConditions, cityId: cityId, parameters: nil) { [weak self] (model: CurrentConditionsModel?) in
-//                guard let model = model else { return }
-//                self?.currentConditions.append(contentsOf: model)
-//                downloadGroup.leave()
-//            }
-//            downloadGroup.wait()
-//        }
-//    }
     
     func presentDetailsController(citiesVC: CitiesViewController, index: Int) {
         if citiesVC.searchMode == false {
             let storyboard = UIStoryboard(name: "Details", bundle: nil)
-            print(storyboard)
             let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
             detailsVC.detailsPresenter = detailsPresenter
-            print("Set details = ", numberOfCities)
             detailsPresenter.setDetails(numberOfCities: numberOfCities)
-            let cityId = cities[index].0
-            let cityName = cities[index].1
+            let cityId = cities[index].cityId
+            let cityName = cities[index].cityName
             guard let currentConditions = currentConditions[index] else { return }
             let dateTime = currentConditions.localObservationDateTime
             let temperature = currentConditions.temperature?.metric?.value
@@ -183,5 +189,13 @@ class CitiesPresenter {
     
     func backButtonAction(citiesVC: CitiesViewController) {
         citiesViewDelegate.reloadView()
-        }
+    }
+    
+    func reloadViewController(viewController: CitiesViewController) {
+        viewController.searchBar.endEditing(true)
+        viewController.searchBar.text = ""
+        viewController.searchMode = false
+        viewController.tableView.reloadData()
+        viewController.viewDidLoad()
+    }
 }

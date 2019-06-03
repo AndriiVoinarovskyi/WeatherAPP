@@ -35,13 +35,9 @@ class DetailsPresenter {
         } else {
             guard let details = details else { return }
             let difference = numberOfCities - details.count
-            if difference != 0 {
-                for _ in 0..<difference {
-                    self.details?.append(nil)
-                }
-            }
+            let subArray: [Details?] = Array(repeating: nil, count: difference)
+            self.details?.append(contentsOf: subArray)
         }
-        print("Details count = ", details?.count)
     }
     
     func setDataInPresenter(index: Int, cityId: String, cityName: String, dateTime: String?, temperature: Double?, weatherText: String?, weatherIcon: Int?) {

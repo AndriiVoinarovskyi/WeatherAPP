@@ -39,12 +39,10 @@ class CitiesViewController: UIViewController {
     }
     */
     @IBAction func searchButtonTapped(_ sender: Any) {
-        print("SearchButton tapped")
         searchButtonAction?()
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        print("Back Button tapped")
         backButtonAction?()
     }
 }
@@ -88,11 +86,7 @@ extension CitiesViewController: UISearchBarDelegate {
 extension CitiesViewController: CitiesViewDelegate {
     
     func reloadView() {
-        searchBar.endEditing(true)
-        searchBar.text = ""
-        searchMode = false
-        tableView.reloadData()
-        self.viewDidLoad()
+        citiesPresenter.reloadViewController(viewController: self)
     }
 }
 

@@ -21,6 +21,10 @@ let widthForecastsCell: CGFloat = 100
 
 let cornerRadius: CGFloat = 8
 
+
+let linkError = "Wrong city name"
+let linkErrorMessage = "Please, check your search language"
+
 let internetConnectionError = "You have a problem with internet connection"
 let internetConnectionErrorMessage = "Please, check your internet connection and try again"
 

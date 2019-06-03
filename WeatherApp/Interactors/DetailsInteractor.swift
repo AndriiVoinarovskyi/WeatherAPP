@@ -18,7 +18,6 @@ class DetailsInteractor {
     
     func getHourlyForecasts(cityId: String, completion: @escaping (HourlyForecastsModel)->()) {
         DataService.shared.getData(for: .hourlyForecasts, cityId: cityId, parameters: ["metric" : "true"], vcDelegate: detailsViewAlertDelegate) { (hourlyForecastsModel: HourlyForecastsModel?) in
-            print("data is gotten")
             guard let model = hourlyForecastsModel else { return }
             completion(model)
         }

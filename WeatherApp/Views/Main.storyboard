@@ -119,29 +119,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGx-a2-QyQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="84"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="84"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="CityNAmeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G21-16-al2">
-                                                            <rect key="frame" x="8" y="8.0000000000000018" width="343" height="20.666666666666671"/>
+                                                            <rect key="frame" x="8" y="8.0000000000000018" width="382" height="20.666666666666671"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CountryLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYa-lN-xqI">
-                                                            <rect key="frame" x="8" y="53.666666666666664" width="343" height="16.999999999999993"/>
+                                                            <rect key="frame" x="8" y="53.666666666666664" width="382" height="16.999999999999993"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="AdministrativeAreaLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ole-3L-UtN">
-                                                            <rect key="frame" x="8" y="32.666666666666664" width="343" height="17"/>
+                                                            <rect key="frame" x="8" y="32.666666666666664" width="382" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNL-Uw-hqQ" userLabel="AddButton">
-                                                            <rect key="frame" x="243.33333333333334" y="8" width="107.66666666666666" height="68"/>
+                                                            <rect key="frame" x="270.66666666666669" y="8" width="119.33333333333331" height="68"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" title="Add"/>
                                                             <connections>
