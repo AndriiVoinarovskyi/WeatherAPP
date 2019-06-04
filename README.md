@@ -34,6 +34,8 @@ After adding a city or canceling the search, the main screen returns to normal m
 
 The cities list is saved in local database.
 
+Demonstration video available here: https://drive.google.com/open?id=1hIlNKO09SSoylENM-jF2VatuHXNb5AbG
+
 Приложение для просмотра погоды.
 
 Функциональность.
@@ -67,3 +69,5 @@ The cities list is saved in local database.
 После добавления города или отмены поиска главный экран переходит в нормальный режим. Для вновь добавленного города отправляется запрос на бэкэнд для получения текущих погодных условий.
 
 Список городов хранится в локальной базе данных.
+
+Демонстрационное видео даступно здесь: https://drive.google.com/open?id=1hIlNKO09SSoylENM-jF2VatuHXNb5AbG
